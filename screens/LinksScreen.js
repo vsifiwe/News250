@@ -20,7 +20,7 @@ export default function LinksScreen() {
                 icon='md-globe'
                 label='Soma New Times Rwanda'
                 onPress={() =>
-                    WebBrowser.openBrowserAsync('https://reactnavigation.org')
+                    WebBrowser.openBrowserAsync('https://www.newtimes.co.rw/')
                 }
             />
 
@@ -28,18 +28,21 @@ export default function LinksScreen() {
                 icon='logo-twitter'
                 label='Dukurikire kuri Twitter'
                 onPress={() =>
-                    WebBrowser.openBrowserAsync('https://twitter.com/douxprism')
+                    WebBrowser.openBrowserAsync('https://twitter.com/vsifiwe')
                 }
-                isLastOption
             />
-
             <OptionButton
                 icon='logo-instagram'
                 label='Dukurikire kuri Instagram'
                 onPress={() =>
-                    WebBrowser.openBrowserAsync(
-                        'https://instagram.com/douxprism'
-                    )
+                    WebBrowser.openBrowserAsync('https://instagram.com/vsifiwe')
+                }
+            />
+            <OptionButton
+                icon='md-mail-unread'
+                label='Twandikire ubutumwa dukorane'
+                onPress={() =>
+                    WebBrowser.openBrowserAsync('mailto:vsifiwe@gmail.com')
                 }
                 isLastOption
             />

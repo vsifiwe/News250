@@ -6,31 +6,42 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import useCachedResources from './hooks/useCachedResources';
 import BottomTabNavigator from './navigation/BottomTabNavigator';
 import LinkingConfiguration from './navigation/LinkingConfiguration';
+import NewsScreen from './screens/NewsScreen';
 
 const Stack = createStackNavigator();
 
 export default function App(props) {
-  const isLoadingComplete = useCachedResources();
+    const isLoadingComplete = useCachedResources();
 
-  if (!isLoadingComplete) {
-    return null;
-  } else {
-    return (
-      <View style={styles.container}>
-        {Platform.OS === 'ios' && <StatusBar barStyle="dark-content" />}
-        <NavigationContainer linking={LinkingConfiguration}>
-          <Stack.Navigator>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </View>
-    );
-  }
+    if (!isLoadingComplete) {
+        return null;
+    } else {
+        return (
+            <View style={styles.container}>
+                {Platform.OS === 'ios' && <StatusBar barStyle='dark-content' />}
+                <NavigationContainer linking={LinkingConfiguration}>
+                    <Stack.Navigator>
+                        <Stack.Screen
+                            name='Root'
+                            component={BottomTabNavigator}
+                        />
+                        <Stack.Screen
+                            name='News'
+                            component={NewsScreen}
+                            options={({ route }) => ({
+                                title: route.params.name,
+                            })}
+                        />
+                    </Stack.Navigator>
+                </NavigationContainer>
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+    },
 });

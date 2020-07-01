@@ -1,32 +1,38 @@
 {
-  "expo": {
-    "name": "HelloWorld",
-    "slug": "News250",
-    "platforms": [
-      "ios",
-      "android",
-      "web"
-    ],
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
-    "splash": {
-      "image": "./assets/images/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "web": {
-      "favicon": "./assets/images/favicon.png"
+    "expo": {
+        "name": "Akuru",
+        "slug": "akuru",
+        "platforms": ["ios", "android"],
+        "version": "1.0.0",
+        "orientation": "portrait",
+        "icon": "./assets/images/icon2.png",
+        "scheme": "myapp",
+        "splash": {
+            "image": "./assets/images/splash2.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#ffffff"
+        },
+        "updates": {
+            "fallbackToCacheTimeout": 0
+        },
+        "assetBundlePatterns": ["**/*"],
+        "android": {
+            "package": "com.syli.akuru",
+            "versionCode": 1,
+            "config": {
+                "googleMobileAdsAppId": "ca-app-pub-5571590294786710~1140792986"
+            }
+        },
+        "ios": {
+            "bundleIdentifier": "com.syli.akuru",
+            "buildNumber": "1.0.0",
+            "supportsTablet": true,
+            "config": {
+                "googleMobileAdsAppId": "ca-app-pub-5571590294786710~3041032169"
+            }
+        },
+        "web": {
+            "favicon": "./assets/images/favicon.png"
+        }
     }
-  }
 }

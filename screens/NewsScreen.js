@@ -14,11 +14,11 @@ import {
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { AdComponent } from '../components/AdComponent';
-import { render } from 'react-dom';
 
-export default function HomeScreen({ navigation }) {
-    const [loading, setLoading] = useState(true);
+export default function NewsScreen({ route, navigation }) {
+    let [loading, setLoading] = useState(true);
     let [articles, setArticles] = useState([]);
+    let { link } = route.params;
 
     // async function setId() {
     //     await setTestDeviceIDAsync('000303be-d19c-4ca0-9d75-7094a90cb9e8');
@@ -28,12 +28,20 @@ export default function HomeScreen({ navigation }) {
     useEffect(async () => {
         try {
             // setId();
-            const response = await fetch(
-                'http://rwandanewsapi.herokuapp.com/igihe'
-            );
+            console.log(link);
+            const response = await fetch(link);
             const data = await response.json();
+            console.log(data);
+            // console.log(data.articles[0]);
+            if (data.articles) {
+                const data1 = data.articles;
+                setArticles(data1);
+                return setLoading(false);
+            }
             setArticles(data);
             setLoading(false);
+
+            // console.log(articles);
         } catch (error) {
             Alert.alert(
                 'Error',
@@ -66,7 +74,7 @@ export default function HomeScreen({ navigation }) {
                         activeOpacity={0.5}
                         key={index}
                         onPress={() =>
-                            navigation.navigate('News', {
+                            navigation.push('News', {
                                 link: company.link,
                                 name: company.name,
                             })
@@ -120,14 +128,17 @@ export default function HomeScreen({ navigation }) {
                         </TouchableOpacity>
                     );
                 })}
+
+                <AdComponent />
             </ScrollView>
         </ScrollView>
     );
 }
 
-HomeScreen.navigationOptions = {
+NewsScreen.navigationOptions = {
     header: null,
 };
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
